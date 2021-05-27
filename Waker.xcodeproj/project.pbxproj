@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		401C61D3265F7CBB00E2388E /* WakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61D2265F7CBB00E2388E /* WakerApp.swift */; };
+		401C61D5265F7CBB00E2388E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61D4265F7CBB00E2388E /* ContentView.swift */; };
+		401C61D7265F7CBD00E2388E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401C61D6265F7CBD00E2388E /* Assets.xcassets */; };
+		401C61DA265F7CBD00E2388E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401C61D9265F7CBD00E2388E /* Preview Assets.xcassets */; };
+		401C61E5265F7CBE00E2388E /* WakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61E4265F7CBE00E2388E /* WakerTests.swift */; };
+		401C61F0265F7CBE00E2388E /* WakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61EF265F7CBE00E2388E /* WakerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		401C61E1265F7CBE00E2388E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 401C61C7265F7CBB00E2388E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 401C61CE265F7CBB00E2388E;
+			remoteInfo = Waker;
+		};
+		401C61EC265F7CBE00E2388E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 401C61C7265F7CBB00E2388E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 401C61CE265F7CBB00E2388E;
+			remoteInfo = Waker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		401C61CF265F7CBB00E2388E /* Waker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		401C61D2265F7CBB00E2388E /* WakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakerApp.swift; sourceTree = "<group>"; };
+		401C61D4265F7CBB00E2388E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		401C61D6265F7CBD00E2388E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		401C61D9265F7CBD00E2388E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		401C61DB265F7CBD00E2388E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		401C61E0265F7CBE00E2388E /* WakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		401C61E4265F7CBE00E2388E /* WakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakerTests.swift; sourceTree = "<group>"; };
+		401C61E6265F7CBE00E2388E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		401C61EB265F7CBE00E2388E /* WakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		401C61EF265F7CBE00E2388E /* WakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakerUITests.swift; sourceTree = "<group>"; };
+		401C61F1265F7CBE00E2388E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		401C61CC265F7CBB00E2388E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		401C61DD265F7CBE00E2388E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		401C61E8265F7CBE00E2388E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		401C61C6265F7CBB00E2388E = {
+			isa = PBXGroup;
+			children = (
+				401C61D1265F7CBB00E2388E /* Waker */,
+				401C61E3265F7CBE00E2388E /* WakerTests */,
+				401C61EE265F7CBE00E2388E /* WakerUITests */,
+				401C61D0265F7CBB00E2388E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		401C61D0265F7CBB00E2388E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				401C61CF265F7CBB00E2388E /* Waker.app */,
+				401C61E0265F7CBE00E2388E /* WakerTests.xctest */,
+				401C61EB265F7CBE00E2388E /* WakerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		401C61D1265F7CBB00E2388E /* Waker */ = {
+			isa = PBXGroup;
+			children = (
+				401C61D2265F7CBB00E2388E /* WakerApp.swift */,
+				401C61D4265F7CBB00E2388E /* ContentView.swift */,
+				401C61D6265F7CBD00E2388E /* Assets.xcassets */,
+				401C61DB265F7CBD00E2388E /* Info.plist */,
+				401C61D8265F7CBD00E2388E /* Preview Content */,
+			);
+			path = Waker;
+			sourceTree = "<group>";
+		};
+		401C61D8265F7CBD00E2388E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				401C61D9265F7CBD00E2388E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		401C61E3265F7CBE00E2388E /* WakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				401C61E4265F7CBE00E2388E /* WakerTests.swift */,
+				401C61E6265F7CBE00E2388E /* Info.plist */,
+			);
+			path = WakerTests;
+			sourceTree = "<group>";
+		};
+		401C61EE265F7CBE00E2388E /* WakerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				401C61EF265F7CBE00E2388E /* WakerUITests.swift */,
+				401C61F1265F7CBE00E2388E /* Info.plist */,
+			);
+			path = WakerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		401C61CE265F7CBB00E2388E /* Waker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 401C61F4265F7CBE00E2388E /* Build configuration list for PBXNativeTarget "Waker" */;
+			buildPhases = (
+				401C61CB265F7CBB00E2388E /* Sources */,
+				401C61CC265F7CBB00E2388E /* Frameworks */,
+				401C61CD265F7CBB00E2388E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Waker;
+			productName = Waker;
+			productReference = 401C61CF265F7CBB00E2388E /* Waker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		401C61DF265F7CBE00E2388E /* WakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 401C61F7265F7CBE00E2388E /* Build configuration list for PBXNativeTarget "WakerTests" */;
+			buildPhases = (
+				401C61DC265F7CBE00E2388E /* Sources */,
+				401C61DD265F7CBE00E2388E /* Frameworks */,
+				401C61DE265F7CBE00E2388E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				401C61E2265F7CBE00E2388E /* PBXTargetDependency */,
+			);
+			name = WakerTests;
+			productName = WakerTests;
+			productReference = 401C61E0265F7CBE00E2388E /* WakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		401C61EA265F7CBE00E2388E /* WakerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 401C61FA265F7CBE00E2388E /* Build configuration list for PBXNativeTarget "WakerUITests" */;
+			buildPhases = (
+				401C61E7265F7CBE00E2388E /* Sources */,
+				401C61E8265F7CBE00E2388E /* Frameworks */,
+				401C61E9265F7CBE00E2388E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				401C61ED265F7CBE00E2388E /* PBXTargetDependency */,
+			);
+			name = WakerUITests;
+			productName = WakerUITests;
+			productReference = 401C61EB265F7CBE00E2388E /* WakerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		401C61C7265F7CBB00E2388E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					401C61CE265F7CBB00E2388E = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					401C61DF265F7CBE00E2388E = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 401C61CE265F7CBB00E2388E;
+					};
+					401C61EA265F7CBE00E2388E = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 401C61CE265F7CBB00E2388E;
+					};
+				};
+			};
+			buildConfigurationList = 401C61CA265F7CBB00E2388E /* Build configuration list for PBXProject "Waker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 401C61C6265F7CBB00E2388E;
+			productRefGroup = 401C61D0265F7CBB00E2388E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				401C61CE265F7CBB00E2388E /* Waker */,
+				401C61DF265F7CBE00E2388E /* WakerTests */,
+				401C61EA265F7CBE00E2388E /* WakerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		401C61CD265F7CBB00E2388E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				401C61DA265F7CBD00E2388E /* Preview Assets.xcassets in Resources */,
+				401C61D7265F7CBD00E2388E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		401C61DE265F7CBE00E2388E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		401C61E9265F7CBE00E2388E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		401C61CB265F7CBB00E2388E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				401C61D5265F7CBB00E2388E /* ContentView.swift in Sources */,
+				401C61D3265F7CBB00E2388E /* WakerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		401C61DC265F7CBE00E2388E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				401C61E5265F7CBE00E2388E /* WakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		401C61E7265F7CBE00E2388E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				401C61F0265F7CBE00E2388E /* WakerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		401C61E2265F7CBE00E2388E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 401C61CE265F7CBB00E2388E /* Waker */;
+			targetProxy = 401C61E1265F7CBE00E2388E /* PBXContainerItemProxy */;
+		};
+		401C61ED265F7CBE00E2388E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 401C61CE265F7CBB00E2388E /* Waker */;
+			targetProxy = 401C61EC265F7CBE00E2388E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		401C61F2265F7CBE00E2388E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		401C61F3265F7CBE00E2388E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		401C61F5265F7CBE00E2388E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Waker/Preview Content\"";
+				DEVELOPMENT_TEAM = AZ5GBDWZ9H;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Waker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joeciou.waker.Waker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		401C61F6265F7CBE00E2388E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Waker/Preview Content\"";
+				DEVELOPMENT_TEAM = AZ5GBDWZ9H;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Waker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joeciou.waker.Waker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		401C61F8265F7CBE00E2388E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZ5GBDWZ9H;
+				INFOPLIST_FILE = WakerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joeciou.waker.WakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Waker.app/Waker";
+			};
+			name = Debug;
+		};
+		401C61F9265F7CBE00E2388E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZ5GBDWZ9H;
+				INFOPLIST_FILE = WakerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joeciou.waker.WakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Waker.app/Waker";
+			};
+			name = Release;
+		};
+		401C61FB265F7CBE00E2388E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZ5GBDWZ9H;
+				INFOPLIST_FILE = WakerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joeciou.waker.WakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Waker;
+			};
+			name = Debug;
+		};
+		401C61FC265F7CBE00E2388E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZ5GBDWZ9H;
+				INFOPLIST_FILE = WakerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joeciou.waker.WakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Waker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		401C61CA265F7CBB00E2388E /* Build configuration list for PBXProject "Waker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				401C61F2265F7CBE00E2388E /* Debug */,
+				401C61F3265F7CBE00E2388E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		401C61F4265F7CBE00E2388E /* Build configuration list for PBXNativeTarget "Waker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				401C61F5265F7CBE00E2388E /* Debug */,
+				401C61F6265F7CBE00E2388E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		401C61F7265F7CBE00E2388E /* Build configuration list for PBXNativeTarget "WakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				401C61F8265F7CBE00E2388E /* Debug */,
+				401C61F9265F7CBE00E2388E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		401C61FA265F7CBE00E2388E /* Build configuration list for PBXNativeTarget "WakerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				401C61FB265F7CBE00E2388E /* Debug */,
+				401C61FC265F7CBE00E2388E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 401C61C7265F7CBB00E2388E /* Project object */;
+}
