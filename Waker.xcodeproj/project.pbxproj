@@ -3,16 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		401C61D3265F7CBB00E2388E /* WakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61D2265F7CBB00E2388E /* WakerApp.swift */; };
-		401C61D5265F7CBB00E2388E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61D4265F7CBB00E2388E /* ContentView.swift */; };
 		401C61D7265F7CBD00E2388E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401C61D6265F7CBD00E2388E /* Assets.xcassets */; };
 		401C61DA265F7CBD00E2388E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401C61D9265F7CBD00E2388E /* Preview Assets.xcassets */; };
 		401C61E5265F7CBE00E2388E /* WakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61E4265F7CBE00E2388E /* WakerTests.swift */; };
 		401C61F0265F7CBE00E2388E /* WakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61EF265F7CBE00E2388E /* WakerUITests.swift */; };
+		401C61FF265F8DAB00E2388E /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61FE265F8DAB00E2388E /* AlertsViewModel.swift */; };
+		401C6203265F93E400E2388E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C6202265F93E400E2388E /* Alert.swift */; };
+		401C6205265F949000E2388E /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C6204265F949000E2388E /* AlertsView.swift */; };
+		401C6208265F9A7300E2388E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 401C6207265F9A7300E2388E /* Realm */; };
+		401C620A265F9A7300E2388E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 401C6209265F9A7300E2388E /* RealmSwift */; };
+		401C6210265FAED400E2388E /* AlertStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C620F265FAED400E2388E /* AlertStore.swift */; };
+		408F2D492663716500F2DEA6 /* AlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F2D482663716500F2DEA6 /* AlertProvider.swift */; };
+		408F2D4B2663721200F2DEA6 /* AlertMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F2D4A2663721200F2DEA6 /* AlertMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +42,6 @@
 /* Begin PBXFileReference section */
 		401C61CF265F7CBB00E2388E /* Waker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		401C61D2265F7CBB00E2388E /* WakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakerApp.swift; sourceTree = "<group>"; };
-		401C61D4265F7CBB00E2388E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		401C61D6265F7CBD00E2388E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		401C61D9265F7CBD00E2388E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		401C61DB265F7CBD00E2388E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +51,12 @@
 		401C61EB265F7CBE00E2388E /* WakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		401C61EF265F7CBE00E2388E /* WakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakerUITests.swift; sourceTree = "<group>"; };
 		401C61F1265F7CBE00E2388E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		401C61FE265F8DAB00E2388E /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
+		401C6202265F93E400E2388E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		401C6204265F949000E2388E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		401C620F265FAED400E2388E /* AlertStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStore.swift; sourceTree = "<group>"; };
+		408F2D482663716500F2DEA6 /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
+		408F2D4A2663721200F2DEA6 /* AlertMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				401C620A265F9A7300E2388E /* RealmSwift in Frameworks */,
+				401C6208265F9A7300E2388E /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +109,10 @@
 		401C61D1265F7CBB00E2388E /* Waker */ = {
 			isa = PBXGroup;
 			children = (
+				408F2D462663713000F2DEA6 /* Providers */,
+				401C6200265F939700E2388E /* Application */,
+				401C61FD265F8BAE00E2388E /* Models */,
 				401C61D2265F7CBB00E2388E /* WakerApp.swift */,
-				401C61D4265F7CBB00E2388E /* ContentView.swift */,
 				401C61D6265F7CBD00E2388E /* Assets.xcassets */,
 				401C61DB265F7CBD00E2388E /* Info.plist */,
 				401C61D8265F7CBD00E2388E /* Preview Content */,
@@ -130,6 +146,49 @@
 			path = WakerUITests;
 			sourceTree = "<group>";
 		};
+		401C61FD265F8BAE00E2388E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				401C6202265F93E400E2388E /* Alert.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		401C6200265F939700E2388E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				401C6201265F93C300E2388E /* Alerts */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		401C6201265F93C300E2388E /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				401C61FE265F8DAB00E2388E /* AlertsViewModel.swift */,
+				401C6204265F949000E2388E /* AlertsView.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		408F2D462663713000F2DEA6 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				408F2D472663715100F2DEA6 /* Alert */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		408F2D472663715100F2DEA6 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				401C620F265FAED400E2388E /* AlertStore.swift */,
+				408F2D482663716500F2DEA6 /* AlertProvider.swift */,
+				408F2D4A2663721200F2DEA6 /* AlertMock.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +205,10 @@
 			dependencies = (
 			);
 			name = Waker;
+			packageProductDependencies = (
+				401C6207265F9A7300E2388E /* Realm */,
+				401C6209265F9A7300E2388E /* RealmSwift */,
+			);
 			productName = Waker;
 			productReference = 401C61CF265F7CBB00E2388E /* Waker.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +280,9 @@
 				Base,
 			);
 			mainGroup = 401C61C6265F7CBB00E2388E;
+			packageReferences = (
+				401C6206265F9A7300E2388E /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 401C61D0265F7CBB00E2388E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				401C61D5265F7CBB00E2388E /* ContentView.swift in Sources */,
+				401C6210265FAED400E2388E /* AlertStore.swift in Sources */,
+				401C6205265F949000E2388E /* AlertsView.swift in Sources */,
 				401C61D3265F7CBB00E2388E /* WakerApp.swift in Sources */,
+				401C6203265F93E400E2388E /* Alert.swift in Sources */,
+				408F2D4B2663721200F2DEA6 /* AlertMock.swift in Sources */,
+				401C61FF265F8DAB00E2388E /* AlertsViewModel.swift in Sources */,
+				408F2D492663716500F2DEA6 /* AlertProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +651,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		401C6206265F9A7300E2388E /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		401C6207265F9A7300E2388E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 401C6206265F9A7300E2388E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		401C6209265F9A7300E2388E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 401C6206265F9A7300E2388E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 401C61C7265F7CBB00E2388E /* Project object */;
 }
