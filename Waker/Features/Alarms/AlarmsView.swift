@@ -22,7 +22,7 @@ struct AlarmsView: View {
                 // Disabled regular alarms
                 ForEach(viewModel.alarms) { alarm in
                     AlarmRow(alarm: alarm, action: {
-                        if editMode!.wrappedValue.isEditing {
+                        if editMode!.wrappedValue == EditMode.active {
                             isAlarmFormPresented.toggle()
                         }
                     })
@@ -73,10 +73,10 @@ struct AlarmRow: View {
                 content
                 Spacer()
                 ZStack(alignment: .trailing) {
-                    //                Toggle("", isOn: $alarm.isOn)
-                    //                    .opacity(editMode!.wrappedValue.isEditing ? 0: 1)
+//                    Toggle("", isOn: $alarm.isOn)
+//                        .opacity(editMode!.wrappedValue.isEditing ? 0: 1)
                     Image(systemName: "chevron.forward").opacity(0.2)
-                        .opacity(editMode!.wrappedValue.isEditing ? 1: 0)
+                        .opacity(editMode!.wrappedValue == EditMode.active ? 1: 0)
                 }
             }
             .contentShape(Rectangle())
