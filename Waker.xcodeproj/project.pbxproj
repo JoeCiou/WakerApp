@@ -12,14 +12,19 @@
 		401C61DA265F7CBD00E2388E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401C61D9265F7CBD00E2388E /* Preview Assets.xcassets */; };
 		401C61E5265F7CBE00E2388E /* WakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61E4265F7CBE00E2388E /* WakerTests.swift */; };
 		401C61F0265F7CBE00E2388E /* WakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61EF265F7CBE00E2388E /* WakerUITests.swift */; };
-		401C61FF265F8DAB00E2388E /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61FE265F8DAB00E2388E /* AlertsViewModel.swift */; };
-		401C6203265F93E400E2388E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C6202265F93E400E2388E /* Alert.swift */; };
-		401C6205265F949000E2388E /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C6204265F949000E2388E /* AlertsView.swift */; };
+		401C61FF265F8DAB00E2388E /* AlarmsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C61FE265F8DAB00E2388E /* AlarmsViewModel.swift */; };
+		401C6203265F93E400E2388E /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C6202265F93E400E2388E /* Alarm.swift */; };
+		401C6205265F949000E2388E /* AlarmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C6204265F949000E2388E /* AlarmsView.swift */; };
 		401C6208265F9A7300E2388E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 401C6207265F9A7300E2388E /* Realm */; };
 		401C620A265F9A7300E2388E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 401C6209265F9A7300E2388E /* RealmSwift */; };
-		401C6210265FAED400E2388E /* AlertStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C620F265FAED400E2388E /* AlertStore.swift */; };
-		408F2D492663716500F2DEA6 /* AlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F2D482663716500F2DEA6 /* AlertProvider.swift */; };
-		408F2D4B2663721200F2DEA6 /* AlertMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F2D4A2663721200F2DEA6 /* AlertMock.swift */; };
+		401C6210265FAED400E2388E /* AlarmStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C620F265FAED400E2388E /* AlarmStorageRepository.swift */; };
+		403E8527266B748E0081E775 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E8526266B748E0081E775 /* TimeUtils.swift */; };
+		403E8529266BB6A00081E775 /* RegularAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E8528266BB6A00081E775 /* RegularAlarm.swift */; };
+		403E852C266BDF3C0081E775 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E852B266BDF3C0081E775 /* Binding+Extension.swift */; };
+		408F2D4B2663721200F2DEA6 /* AlarmMockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F2D4A2663721200F2DEA6 /* AlarmMockRepository.swift */; };
+		409A7139266A0E1B00F78768 /* AlarmFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A7138266A0E1B00F78768 /* AlarmFormView.swift */; };
+		409A713B266A0E4300F78768 /* AlarmFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A713A266A0E4300F78768 /* AlarmFormViewModel.swift */; };
+		409A713D266A22E700F78768 /* AlarmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A713C266A22E700F78768 /* AlarmRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,12 +56,17 @@
 		401C61EB265F7CBE00E2388E /* WakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		401C61EF265F7CBE00E2388E /* WakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakerUITests.swift; sourceTree = "<group>"; };
 		401C61F1265F7CBE00E2388E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		401C61FE265F8DAB00E2388E /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
-		401C6202265F93E400E2388E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		401C6204265F949000E2388E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
-		401C620F265FAED400E2388E /* AlertStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStore.swift; sourceTree = "<group>"; };
-		408F2D482663716500F2DEA6 /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
-		408F2D4A2663721200F2DEA6 /* AlertMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMock.swift; sourceTree = "<group>"; };
+		401C61FE265F8DAB00E2388E /* AlarmsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsViewModel.swift; sourceTree = "<group>"; };
+		401C6202265F93E400E2388E /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		401C6204265F949000E2388E /* AlarmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsView.swift; sourceTree = "<group>"; };
+		401C620F265FAED400E2388E /* AlarmStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStorageRepository.swift; sourceTree = "<group>"; };
+		403E8526266B748E0081E775 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		403E8528266BB6A00081E775 /* RegularAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularAlarm.swift; sourceTree = "<group>"; };
+		403E852B266BDF3C0081E775 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
+		408F2D4A2663721200F2DEA6 /* AlarmMockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMockRepository.swift; sourceTree = "<group>"; };
+		409A7138266A0E1B00F78768 /* AlarmFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmFormView.swift; sourceTree = "<group>"; };
+		409A713A266A0E4300F78768 /* AlarmFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmFormViewModel.swift; sourceTree = "<group>"; };
+		409A713C266A22E700F78768 /* AlarmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +119,10 @@
 		401C61D1265F7CBB00E2388E /* Waker */ = {
 			isa = PBXGroup;
 			children = (
-				408F2D462663713000F2DEA6 /* Providers */,
-				401C6200265F939700E2388E /* Application */,
+				403E852A266BDEF90081E775 /* Extensions */,
+				403E8521266B739D0081E775 /* Utilities */,
+				408F2D462663713000F2DEA6 /* Repositories */,
+				401C6200265F939700E2388E /* Features */,
 				401C61FD265F8BAE00E2388E /* Models */,
 				401C61D2265F7CBB00E2388E /* WakerApp.swift */,
 				401C61D6265F7CBD00E2388E /* Assets.xcassets */,
@@ -149,44 +161,71 @@
 		401C61FD265F8BAE00E2388E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				401C6202265F93E400E2388E /* Alert.swift */,
+				401C6202265F93E400E2388E /* Alarm.swift */,
+				403E8528266BB6A00081E775 /* RegularAlarm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		401C6200265F939700E2388E /* Application */ = {
+		401C6200265F939700E2388E /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				401C6201265F93C300E2388E /* Alerts */,
+				409A7135266A0DE900F78768 /* AlarmtForm */,
+				401C6201265F93C300E2388E /* Alarms */,
 			);
-			path = Application;
+			path = Features;
 			sourceTree = "<group>";
 		};
-		401C6201265F93C300E2388E /* Alerts */ = {
+		401C6201265F93C300E2388E /* Alarms */ = {
 			isa = PBXGroup;
 			children = (
-				401C61FE265F8DAB00E2388E /* AlertsViewModel.swift */,
-				401C6204265F949000E2388E /* AlertsView.swift */,
+				401C61FE265F8DAB00E2388E /* AlarmsViewModel.swift */,
+				401C6204265F949000E2388E /* AlarmsView.swift */,
 			);
-			path = Alerts;
+			path = Alarms;
 			sourceTree = "<group>";
 		};
-		408F2D462663713000F2DEA6 /* Providers */ = {
+		403E8521266B739D0081E775 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				408F2D472663715100F2DEA6 /* Alert */,
+				403E8526266B748E0081E775 /* TimeUtils.swift */,
 			);
-			path = Providers;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
-		408F2D472663715100F2DEA6 /* Alert */ = {
+		403E852A266BDEF90081E775 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				401C620F265FAED400E2388E /* AlertStore.swift */,
-				408F2D482663716500F2DEA6 /* AlertProvider.swift */,
-				408F2D4A2663721200F2DEA6 /* AlertMock.swift */,
+				403E852B266BDF3C0081E775 /* Binding+Extension.swift */,
 			);
-			path = Alert;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		408F2D462663713000F2DEA6 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				408F2D472663715100F2DEA6 /* Alarm */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		408F2D472663715100F2DEA6 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				401C620F265FAED400E2388E /* AlarmStorageRepository.swift */,
+				408F2D4A2663721200F2DEA6 /* AlarmMockRepository.swift */,
+				409A713C266A22E700F78768 /* AlarmRepository.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		409A7135266A0DE900F78768 /* AlarmtForm */ = {
+			isa = PBXGroup;
+			children = (
+				409A713A266A0E4300F78768 /* AlarmFormViewModel.swift */,
+				409A7138266A0E1B00F78768 /* AlarmFormView.swift */,
+			);
+			path = AlarmtForm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,13 +364,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				401C6210265FAED400E2388E /* AlertStore.swift in Sources */,
-				401C6205265F949000E2388E /* AlertsView.swift in Sources */,
+				401C6210265FAED400E2388E /* AlarmStorageRepository.swift in Sources */,
+				401C6205265F949000E2388E /* AlarmsView.swift in Sources */,
 				401C61D3265F7CBB00E2388E /* WakerApp.swift in Sources */,
-				401C6203265F93E400E2388E /* Alert.swift in Sources */,
-				408F2D4B2663721200F2DEA6 /* AlertMock.swift in Sources */,
-				401C61FF265F8DAB00E2388E /* AlertsViewModel.swift in Sources */,
-				408F2D492663716500F2DEA6 /* AlertProvider.swift in Sources */,
+				409A713D266A22E700F78768 /* AlarmRepository.swift in Sources */,
+				403E852C266BDF3C0081E775 /* Binding+Extension.swift in Sources */,
+				401C6203265F93E400E2388E /* Alarm.swift in Sources */,
+				408F2D4B2663721200F2DEA6 /* AlarmMockRepository.swift in Sources */,
+				403E8527266B748E0081E775 /* TimeUtils.swift in Sources */,
+				409A7139266A0E1B00F78768 /* AlarmFormView.swift in Sources */,
+				403E8529266BB6A00081E775 /* RegularAlarm.swift in Sources */,
+				401C61FF265F8DAB00E2388E /* AlarmsViewModel.swift in Sources */,
+				409A713B266A0E4300F78768 /* AlarmFormViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
