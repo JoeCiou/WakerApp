@@ -9,18 +9,18 @@ import Foundation
 
 class AlarmFormViewModel: ObservableObject {
     let repository: AlarmRepository
-    let editAlarm: Alarm?
+    let editTarget: Alarm?
     @Published var hour: Int
     @Published var minute: Int
     @Published var remark: String
     
-    init(repository: AlarmRepository = AlarmStorageRepository.shared, editAlarm: Alarm? = nil) {
+    init(repository: AlarmRepository = AlarmStorageRepository.shared, editTarget: Alarm? = nil) {
         self.repository = repository
-        self.editAlarm = editAlarm
-        if let editAlarm = editAlarm {
-            hour = editAlarm.hour
-            minute = editAlarm.minute
-            remark = editAlarm.remark
+        self.editTarget = editTarget
+        if let editTarget = editTarget {
+            hour = editTarget.hour
+            minute = editTarget.minute
+            remark = editTarget.remark
         } else {
             let now = Date()
             hour = Calendar.current.component(.hour, from: now)
@@ -30,7 +30,11 @@ class AlarmFormViewModel: ObservableObject {
     }
     
     func submit() {
-        let alarm = Alarm(hour: hour, minute: minute, remark: remark)
-        repository.addAlarm(alarm)
+        if let editTarget = editTarget {
+            repository.updateAlarm(editTarget, hour: hour, minute: minute, remark: remark)
+        } else {
+            let alarm = Alarm(hour: hour, minute: minute, remark: remark)
+            repository.addAlarm(alarm)
+        }
     }
 }

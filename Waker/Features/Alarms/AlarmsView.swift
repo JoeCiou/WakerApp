@@ -8,9 +8,25 @@
 import SwiftUI
 import RealmSwift
 
+private class AlarmSheetData: Identifiable {
+    var editTarget: Alarm?
+    
+    init(editTarget: Alarm? = nil) {
+        self.editTarget = editTarget
+    }
+}
+
+private class RegularAlarmSheetData: Identifiable {
+    var editTarget: RegularAlarm?
+    
+    init(editTarget: RegularAlarm? = nil) {
+        self.editTarget = editTarget
+    }
+}
+
 struct AlarmsView: View {
     @ObservedObject var viewModel: AlarmsViewModel
-    @State private var isAlarmFormPresented = false
+    @State private var alarmSheetData: AlarmSheetData? = nil
     
     @Environment(\.editMode) private var editMode: Binding<EditMode>?
     
@@ -23,7 +39,7 @@ struct AlarmsView: View {
                 ForEach(viewModel.alarms) { alarm in
                     AlarmRow(alarm: alarm, action: {
                         if editMode!.wrappedValue == EditMode.active {
-                            isAlarmFormPresented.toggle()
+                            alarmSheetData = AlarmSheetData(editTarget: alarm)
                         }
                     })
                 }.onDelete(perform: { indexSet in
@@ -40,15 +56,18 @@ struct AlarmsView: View {
                     Text(editMode!.wrappedValue.isEditing ? "完成": "編輯")
                 },
                 trailing: Button(action: {
-                    isAlarmFormPresented.toggle()
+                    alarmSheetData = AlarmSheetData()
                 }) {
                     Image(systemName: "plus")
                 }
             )
         }
-        .sheet(isPresented: $isAlarmFormPresented) {
-            AlarmFormView(viewModel: AlarmFormViewModel())
+        .sheet(item: $alarmSheetData) { sheetData in
+            AlarmFormView(viewModel: AlarmFormViewModel(editTarget: sheetData.editTarget))
         }
+//        .sheet(isPresented: $isAlarmFormPresented) {
+//            AlarmFormView(viewModel: AlarmFormViewModel())
+//        }
     }
 }
 

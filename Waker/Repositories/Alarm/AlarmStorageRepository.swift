@@ -60,8 +60,12 @@ class AlarmStorageRepository: AlarmRepository {
         }
     }
     
-    func updateAlarm(_ alarm: Alarm) {
-        // TODO
+    func updateAlarm(_ alarm: Alarm, hour: Int?, minute: Int?, remark: String?) {
+        try! realm.write {
+            if let hour = hour { alarm.hour = hour }
+            if let minute = minute { alarm.minute = minute }
+            if let remark = remark { alarm.remark = remark }
+        }
     }
     
     func deleteAlarm(_ alarm: Alarm) {
@@ -84,8 +88,14 @@ class AlarmStorageRepository: AlarmRepository {
         }
     }
     
-    func updateRegularAlarm(_ regularAlarm: RegularAlarm) {
-        // TODO
+    func updateRegularAlarm(_ regularAlarm: RegularAlarm, hour: Int?, minute: Int?, repeatSettings: RepeatSettings?, remark: String?, isOn: Bool?) {
+        try! realm.write {
+            if let hour = hour { regularAlarm.hour = hour }
+            if let minute = minute { regularAlarm.minute = minute }
+            if let repeatSettings = repeatSettings { regularAlarm.repeatSettings = repeatSettings }
+            if let remark = remark { regularAlarm.remark = remark }
+            if let isOn = isOn { regularAlarm.isOn = isOn }
+        }
     }
     
     func deleteRegularAlarm(_ regularAlarm: RegularAlarm) {

@@ -20,8 +20,8 @@ class AlarmMockRepository: AlarmRepository {
     ]
     
     private var regularAlarms = [
-        RegularAlarm(hour: 8, minute: 30, repeatSettings: RepeatSettings(weeks: [1,2,3,4,5])),
-        RegularAlarm(hour: 10, minute: 00, repeatSettings: RepeatSettings(weeks: [6,7])),
+        RegularAlarm(hour: 8, minute: 30, repeatSettings: RepeatSettings(weeks: [1,2,3,4,5]), remark: ""),
+        RegularAlarm(hour: 10, minute: 00, repeatSettings: RepeatSettings(weeks: [6,7]), remark: ""),
     ]
     
     init() {
@@ -33,8 +33,12 @@ class AlarmMockRepository: AlarmRepository {
         alarms.append(alarm)
     }
     
-    func updateAlarm(_ alarm: Alarm) {
-        // TODO
+    func updateAlarm(_ alarm: Alarm, hour: Int?, minute: Int?, remark: String?) {
+        if let index = alarms.firstIndex(of: alarm) {
+            if let hour = hour { alarms[index].hour = hour }
+            if let minute = minute { alarms[index].minute = minute }
+            if let remark = remark { alarms[index].remark = remark }
+        }
     }
     
     func deleteAlarm(_ alarm: Alarm) {
@@ -48,7 +52,19 @@ class AlarmMockRepository: AlarmRepository {
     }
     
     func updateRegularAlarm(_ regularAlarm: RegularAlarm) {
-        // TODO
+        if let index = regularAlarms.firstIndex(of: regularAlarm) {
+            regularAlarms[index] = regularAlarm
+        }
+    }
+    
+    func updateRegularAlarm(_ regularAlarm: RegularAlarm, hour: Int?, minute: Int?, repeatSettings: RepeatSettings?, remark: String?, isOn: Bool?) {
+        if let index = regularAlarms.firstIndex(of: regularAlarm) {
+            if let hour = hour { regularAlarms[index].hour = hour }
+            if let minute = minute { regularAlarms[index].minute = minute }
+            if let repeatSettings = repeatSettings { regularAlarms[index].repeatSettings = repeatSettings }
+            if let remark = remark { regularAlarms[index].remark = remark }
+            if let isOn = isOn { regularAlarms[index].isOn = isOn }
+        }
     }
     
     func deleteRegularAlarm(_ regularAlarm: RegularAlarm) {

@@ -25,6 +25,8 @@
 		409A7139266A0E1B00F78768 /* AlarmFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A7138266A0E1B00F78768 /* AlarmFormView.swift */; };
 		409A713B266A0E4300F78768 /* AlarmFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A713A266A0E4300F78768 /* AlarmFormViewModel.swift */; };
 		409A713D266A22E700F78768 /* AlarmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A713C266A22E700F78768 /* AlarmRepository.swift */; };
+		40A0DDFC266E02E300C93844 /* RegularAlarmFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0DDFB266E02E300C93844 /* RegularAlarmFormViewModel.swift */; };
+		40A0DDFE266E02F400C93844 /* RegularAlarmFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0DDFD266E02F400C93844 /* RegularAlarmFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		409A7138266A0E1B00F78768 /* AlarmFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmFormView.swift; sourceTree = "<group>"; };
 		409A713A266A0E4300F78768 /* AlarmFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmFormViewModel.swift; sourceTree = "<group>"; };
 		409A713C266A22E700F78768 /* AlarmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepository.swift; sourceTree = "<group>"; };
+		40A0DDFB266E02E300C93844 /* RegularAlarmFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularAlarmFormViewModel.swift; sourceTree = "<group>"; };
+		40A0DDFD266E02F400C93844 /* RegularAlarmFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularAlarmFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 		401C6200265F939700E2388E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				40A0DDFA266DF23900C93844 /* RegularAlarmForm */,
 				409A7135266A0DE900F78768 /* AlarmtForm */,
 				401C6201265F93C300E2388E /* Alarms */,
 			);
@@ -226,6 +231,15 @@
 				409A7138266A0E1B00F78768 /* AlarmFormView.swift */,
 			);
 			path = AlarmtForm;
+			sourceTree = "<group>";
+		};
+		40A0DDFA266DF23900C93844 /* RegularAlarmForm */ = {
+			isa = PBXGroup;
+			children = (
+				40A0DDFB266E02E300C93844 /* RegularAlarmFormViewModel.swift */,
+				40A0DDFD266E02F400C93844 /* RegularAlarmFormView.swift */,
+			);
+			path = RegularAlarmForm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +386,8 @@
 				401C6203265F93E400E2388E /* Alarm.swift in Sources */,
 				408F2D4B2663721200F2DEA6 /* AlarmMockRepository.swift in Sources */,
 				403E8527266B748E0081E775 /* TimeUtils.swift in Sources */,
+				40A0DDFC266E02E300C93844 /* RegularAlarmFormViewModel.swift in Sources */,
+				40A0DDFE266E02F400C93844 /* RegularAlarmFormView.swift in Sources */,
 				409A7139266A0E1B00F78768 /* AlarmFormView.swift in Sources */,
 				403E8529266BB6A00081E775 /* RegularAlarm.swift in Sources */,
 				401C61FF265F8DAB00E2388E /* AlarmsViewModel.swift in Sources */,

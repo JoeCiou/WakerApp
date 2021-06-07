@@ -13,14 +13,14 @@ class RegularAlarm: Object, ObjectKeyIdentifiable {
     @objc dynamic var hour: Int = 0
     @objc dynamic var minute: Int = 0
     @objc dynamic var repeatSettings: RepeatSettings?
-    @objc dynamic var remark: String? = nil
+    @objc dynamic var remark: String = ""
     @objc dynamic var isOn: Bool = false
     
     override class func primaryKey() -> String? {
         return "_id"
     }
     
-    convenience init(hour: Int, minute: Int, repeatSettings: RepeatSettings, remark: String? = nil, isOn: Bool = true) {
+    convenience init(hour: Int, minute: Int, repeatSettings: RepeatSettings, remark: String, isOn: Bool = true) {
         self.init()
         self.hour = hour
         self.minute = minute
