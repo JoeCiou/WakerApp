@@ -12,9 +12,19 @@ class RegularAlarm: Object, ObjectKeyIdentifiable {
     @objc dynamic var _id: ObjectId = ObjectId.generate()
     @objc dynamic var hour: Int = 0
     @objc dynamic var minute: Int = 0
-    @objc dynamic var repeatSettings: RepeatSettings?
+    private let repeatWeeks = List<Int>()
     @objc dynamic var remark: String = ""
     @objc dynamic var isOn: Bool = false
+    
+    var repeatSettings: RepeatSettings {
+        get {
+            RepeatSettings(weeks: Array(repeatWeeks))
+        }
+        set {
+            repeatWeeks.removeAll()
+            repeatWeeks.append(objectsIn: newValue.weeks)
+        }
+    }
     
     override class func primaryKey() -> String? {
         return "_id"
@@ -24,19 +34,8 @@ class RegularAlarm: Object, ObjectKeyIdentifiable {
         self.init()
         self.hour = hour
         self.minute = minute
-        self.repeatSettings = repeatSettings
+        self.repeatWeeks.append(objectsIn: repeatSettings.weeks)
         self.remark = remark
         self.isOn = isOn
-    }
-}
-
-class RepeatSettings: EmbeddedObject {
-    let weeks = List<Int>()
-    
-    convenience init(weeks: [Int]? = nil) {
-        self.init()
-        if let weeks = weeks {
-            self.weeks.append(objectsIn: weeks)
-        }
     }
 }

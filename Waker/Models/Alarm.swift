@@ -2,26 +2,59 @@
 //  Alarm.swift
 //  Waker
 //
-//  Created by Joe Ciou on 2021/5/27.
+//  Created by Joe Ciou on 2021/6/8.
 //
 
 import Foundation
-import RealmSwift
 
-class Alarm: Object, ObjectKeyIdentifiable {
-    @objc dynamic var _id: ObjectId = ObjectId.generate()
-    @objc dynamic var hour: Int = 0
-    @objc dynamic var minute: Int = 0
-    @objc dynamic var remark: String = ""
-    
-    override class func primaryKey() -> String? {
-        return "_id"
+enum Alarm {
+    case common(CommonAlarm)
+    case regular(RegularAlarm)
+}
+
+extension Alarm: Identifiable {
+    var id: ObjectIdentifier {
+        switch self {
+        case .common(let commonAlarm):
+            return commonAlarm.id
+        case .regular(let regularAlarm):
+            return regularAlarm.id
+        }
     }
     
-    convenience init(hour: Int, minute: Int, remark: String) {
-        self.init()
-        self.hour = hour
-        self.minute = minute
-        self.remark = remark
+    var hour: Int {
+        switch self {
+        case .common(let commonAlarm):
+            return commonAlarm.hour
+        case .regular(let regularAlarm):
+            return regularAlarm.hour
+        }
+    }
+    
+    var minute: Int {
+        switch self {
+        case .common(let commonAlarm):
+            return commonAlarm.minute
+        case .regular(let regularAlarm):
+            return regularAlarm.minute
+        }
+    }
+    
+    var remark: String {
+        switch self {
+        case .common(let commonAlarm):
+            return commonAlarm.remark
+        case .regular(let regularAlarm):
+            return regularAlarm.remark
+        }
+    }
+    
+    var isInvalidated: Bool {
+        switch self {
+        case .common(let commonAlarm):
+            return commonAlarm.isInvalidated
+        case .regular(let regularAlarm):
+            return regularAlarm.isInvalidated
+        }
     }
 }

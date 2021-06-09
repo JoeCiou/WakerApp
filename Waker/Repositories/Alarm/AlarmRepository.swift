@@ -9,14 +9,23 @@ import Foundation
 import Combine
 
 protocol AlarmRepository {
-    // Alarm
-    var alarmsPublisher: AnyPublisher<[Alarm], Never> { get }
-    func addAlarm(_ alarm: Alarm)
-    func updateAlarm(_ alarm: Alarm, hour: Int?, minute: Int?, remark: String?)
-    func deleteAlarm(_ alarm: Alarm)
+    // Common Alarm
+    var commonAlarmsPublisher: AnyPublisher<[CommonAlarm], Never> { get }
+    func addCommonAlarm(_ commonAlarm: CommonAlarm)
+    func updateCommonAlarm(_ commonAlarm: CommonAlarm, hour: Int?, minute: Int?, remark: String?)
+    func deleteCommonAlarm(_ commonAlarm: CommonAlarm)
     // Regular Alarm
     var regularAlarmsPublisher: AnyPublisher<[RegularAlarm], Never> { get }
     func addRegularAlarm(_ regularAlarm: RegularAlarm)
     func updateRegularAlarm(_ regularAlarm: RegularAlarm, hour: Int?, minute: Int?, repeatSettings: RepeatSettings?, remark: String?, isOn: Bool?)
     func deleteRegularAlarm(_ regularAlarm: RegularAlarm)
+}
+
+extension AlarmRepository {
+    func updateCommonAlarm(_ commonAlarm: CommonAlarm, hour: Int? = nil, minute: Int? = nil, remark: String? = nil) {
+        return updateCommonAlarm(commonAlarm, hour: hour, minute: minute, remark: remark)
+    }
+    func updateRegularAlarm(_ regularAlarm: RegularAlarm, hour: Int? = nil, minute: Int? = nil, repeatSettings: RepeatSettings? = nil, remark: String? = nil, isOn: Bool? = nil) {
+        return updateRegularAlarm(regularAlarm, hour: hour, minute: minute, repeatSettings: repeatSettings, remark: remark, isOn: isOn)
+    }
 }

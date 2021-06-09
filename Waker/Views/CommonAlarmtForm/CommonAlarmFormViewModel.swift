@@ -1,5 +1,5 @@
 //
-//  AlarmFormViewModel.swift
+//  CommonAlarmFormViewModel.swift
 //  Waker
 //
 //  Created by Joe Ciou on 2021/6/4.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-class AlarmFormViewModel: ObservableObject {
+class CommonAlarmFormViewModel: ObservableObject {
     let repository: AlarmRepository
-    let editTarget: Alarm?
+    let editTarget: CommonAlarm?
     @Published var hour: Int
     @Published var minute: Int
     @Published var remark: String
     
-    init(repository: AlarmRepository = AlarmStorageRepository.shared, editTarget: Alarm? = nil) {
+    init(repository: AlarmRepository = AlarmStorageRepository.shared, editTarget: CommonAlarm? = nil) {
         self.repository = repository
         self.editTarget = editTarget
         if let editTarget = editTarget {
@@ -31,10 +31,10 @@ class AlarmFormViewModel: ObservableObject {
     
     func submit() {
         if let editTarget = editTarget {
-            repository.updateAlarm(editTarget, hour: hour, minute: minute, remark: remark)
+            repository.updateCommonAlarm(editTarget, hour: hour, minute: minute, remark: remark)
         } else {
-            let alarm = Alarm(hour: hour, minute: minute, remark: remark)
-            repository.addAlarm(alarm)
+            let commonAlarm = CommonAlarm(hour: hour, minute: minute, remark: remark)
+            repository.addCommonAlarm(commonAlarm)
         }
     }
 }

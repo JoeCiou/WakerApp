@@ -12,26 +12,26 @@ import RealmSwift
 class AlarmStorageRepository: AlarmRepository {
     static let shared = AlarmStorageRepository()
     
-    let alarmsPublisher: AnyPublisher<[Alarm], Never>
+    let commonAlarmsPublisher: AnyPublisher<[CommonAlarm], Never>
     let regularAlarmsPublisher: AnyPublisher<[RegularAlarm], Never>
     
     private let realm = try! Realm()
-    private var alarms: Results<Alarm>
+    private var commonAlarms: Results<CommonAlarm>
     private var regularAlarms: Results<RegularAlarm>
     
     private init() {
-        alarms = realm.objects(Alarm.self)
+        commonAlarms = realm.objects(CommonAlarm.self)
         regularAlarms = realm.objects(RegularAlarm.self)
         
-        alarmsPublisher = alarms.collectionPublisher
+        commonAlarmsPublisher = commonAlarms.collectionPublisher
             .map { input in
-                return input.sorted { alarm1, alarm2 in
-                    let date1 = DateComponents(calendar: Calendar.current, hour: alarm1.hour, minute: alarm1.minute).date!
-                    let date2 = DateComponents(calendar: Calendar.current, hour: alarm2.hour, minute: alarm2.minute).date!
-                    return date1 != date2 ? date1 < date2: alarm1._id < alarm2._id
+                return input.sorted { commonAlarm1, commonAlarm2 in
+                    let date1 = DateComponents(calendar: Calendar.current, hour: commonAlarm1.hour, minute: commonAlarm1.minute).date!
+                    let date2 = DateComponents(calendar: Calendar.current, hour: commonAlarm2.hour, minute: commonAlarm2.minute).date!
+                    return date1 != date2 ? date1 < date2: commonAlarm1._id < commonAlarm2._id
                 }
             }
-            .replaceError(with: [Alarm]())
+            .replaceError(with: [CommonAlarm]())
             .eraseToAnyPublisher()
         
         regularAlarmsPublisher = regularAlarms.collectionPublisher
@@ -46,39 +46,23 @@ class AlarmStorageRepository: AlarmRepository {
             .eraseToAnyPublisher()
     }
     
-    func fetchAlarms() -> [Alarm] {
-        return alarms.sorted { alarm1, alarm2 in
-            let date1 = DateComponents(calendar: Calendar.current, hour: alarm1.hour, minute: alarm1.minute).date!
-            let date2 = DateComponents(calendar: Calendar.current, hour: alarm2.hour, minute: alarm2.minute).date!
-            return date1 != date2 ? date1 < date2: alarm1._id < alarm2._id
-        }
-    }
-    
-    func addAlarm(_ alarm: Alarm) {
+    func addCommonAlarm(_ commonAlarm: CommonAlarm) {
         try! realm.write {
-            realm.add(alarm)
+            realm.add(commonAlarm)
         }
     }
     
-    func updateAlarm(_ alarm: Alarm, hour: Int?, minute: Int?, remark: String?) {
+    func updateCommonAlarm(_ commonAlarm: CommonAlarm, hour: Int?, minute: Int?, remark: String?) {
         try! realm.write {
-            if let hour = hour { alarm.hour = hour }
-            if let minute = minute { alarm.minute = minute }
-            if let remark = remark { alarm.remark = remark }
+            if let hour = hour { commonAlarm.hour = hour }
+            if let minute = minute { commonAlarm.minute = minute }
+            if let remark = remark { commonAlarm.remark = remark }
         }
     }
     
-    func deleteAlarm(_ alarm: Alarm) {
+    func deleteCommonAlarm(_ commonAlarm: CommonAlarm) {
         try! realm.write {
-            realm.delete(alarm)
-        }
-    }
-    
-    func fetchRegularAlarms() -> [RegularAlarm] {
-        return regularAlarms.sorted { alarm1, alarm2 in
-            let date1 = DateComponents(calendar: Calendar.current, hour: alarm1.hour, minute: alarm1.minute).date!
-            let date2 = DateComponents(calendar: Calendar.current, hour: alarm2.hour, minute: alarm2.minute).date!
-            return date1 != date2 ? date1 < date2: alarm1._id < alarm2._id
+            realm.delete(commonAlarm)
         }
     }
     
