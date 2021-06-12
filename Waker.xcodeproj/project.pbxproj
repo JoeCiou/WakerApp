@@ -150,13 +150,13 @@
 		401C61D1265F7CBB00E2388E /* Waker */ = {
 			isa = PBXGroup;
 			children = (
-				40B78751267270F4007D9901 /* Repositories */,
 				40B787562672758E007D9901 /* Stores */,
-				40B7875026726DC8007D9901 /* Service */,
-				403E852A266BDEF90081E775 /* Extensions */,
-				403E8521266B739D0081E775 /* Utilities */,
+				40B7875026726DC8007D9901 /* Services */,
+				40B78751267270F4007D9901 /* Repositories */,
 				401C6200265F939700E2388E /* Views */,
 				401C61FD265F8BAE00E2388E /* Models */,
+				403E8521266B739D0081E775 /* Utilities */,
+				403E852A266BDEF90081E775 /* Extensions */,
 				401C61D2265F7CBB00E2388E /* WakerApp.swift */,
 				401C61D6265F7CBD00E2388E /* Assets.xcassets */,
 				401C61DB265F7CBD00E2388E /* Info.plist */,
@@ -292,13 +292,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		40B7875026726DC8007D9901 /* Service */ = {
+		40B7875026726DC8007D9901 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				40B78754267271C8007D9901 /* DataFetchable.swift */,
 				40578FAB2670F19E00BD3644 /* WordService.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		40B78751267270F4007D9901 /* Repositories */ = {

@@ -1,5 +1,5 @@
 //
-//  Question.swift
+//  Word.swift
 //  Waker
 //
 //  Created by Joe Ciou on 2021/6/9.
