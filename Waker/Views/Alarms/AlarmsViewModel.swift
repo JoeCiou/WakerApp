@@ -10,25 +10,35 @@ import Combine
 import RealmSwift
 
 class AlarmsViewModel: ObservableObject {
-    let repository: AlarmRepository
-    private var commonAlarmsCancellable: AnyCancellable?
-    private var regularAlarmsCancellable: AnyCancellable?
+    private var commonAlarmsCanceller: AnyCancellable?
+    private var regularAlarmsCanceller: AnyCancellable?
     
     private var commonAlarms: [CommonAlarm] = []
     @Published var regularAlarms: [RegularAlarm] = []
     @Published var upcomingAlarms: [Alarm] = []
     
-    init(repository: AlarmRepository = AlarmStorageRepository.shared) {
-        self.repository = repository
-        self.commonAlarmsCancellable = repository.commonAlarmsPublisher.sink { commonAlarms in
+    init() {
+        self.commonAlarmsCanceller = CommonAlarmStore.shared.dataPublisher.sink { commonAlarms in
             self.commonAlarms = commonAlarms
             self.updateUpcomingAlarms()
         }
-        self.regularAlarmsCancellable = repository.regularAlarmsPublisher.sink { regularAlarms in
-            print("update")
+        self.regularAlarmsCanceller = RegularAlarmStore.shared.dataPublisher.sink { regularAlarms in
             self.regularAlarms = regularAlarms
             self.updateUpcomingAlarms()
         }
+    }
+    
+    #if DEBUG
+    init(mockCommonAlarms: [CommonAlarm], mockRegularAlarms: [RegularAlarm]) {
+        self.commonAlarms = mockCommonAlarms
+        self.regularAlarms = mockRegularAlarms
+        self.updateUpcomingAlarms()
+    }
+    #endif
+    
+    deinit {
+        self.commonAlarmsCanceller?.cancel()
+        self.regularAlarmsCanceller?.cancel()
     }
     
     private func updateUpcomingAlarms() {
@@ -49,15 +59,15 @@ class AlarmsViewModel: ObservableObject {
     }
     
     func switchRegularAlarm(_ regularAlarm: RegularAlarm) {
-        repository.updateRegularAlarm(regularAlarm, isOn: !regularAlarm.isOn)
+        RegularAlarmStore.shared.update(regularAlarm, isOn: !regularAlarm.isOn)
     }
     
     func deleteAlarm(_ alarm: Alarm) {
         switch alarm {
         case .common(let commonAlarm):
-            repository.deleteCommonAlarm(commonAlarm)
+            CommonAlarmStore.shared.delete(commonAlarm)
         case .regular(let regularAlarm):
-            repository.deleteRegularAlarm(regularAlarm)
+            RegularAlarmStore.shared.delete(regularAlarm)
         }
     }
     

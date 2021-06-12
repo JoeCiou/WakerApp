@@ -62,6 +62,6 @@ struct RegularAlarmFormView: View {
 
 struct RegularAlarmFormView_Previews: PreviewProvider {
     static var previews: some View {
-        RegularAlarmFormView(viewModel: RegularAlarmFormViewModel(repository: AlarmMockRepository()))
+        RegularAlarmFormView(viewModel: RegularAlarmFormViewModel())
     }
 }

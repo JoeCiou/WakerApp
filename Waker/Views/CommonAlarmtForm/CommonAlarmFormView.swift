@@ -53,6 +53,6 @@ struct CommonAlarmFormView: View {
 
 struct CommonAlarmFormView_Previews: PreviewProvider {
     static var previews: some View {
-        CommonAlarmFormView(viewModel: CommonAlarmFormViewModel(repository: AlarmMockRepository()))
+        CommonAlarmFormView(viewModel: CommonAlarmFormViewModel())
     }
 }

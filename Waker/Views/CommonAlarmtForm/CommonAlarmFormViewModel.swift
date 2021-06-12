@@ -8,14 +8,12 @@
 import Foundation
 
 class CommonAlarmFormViewModel: ObservableObject {
-    let repository: AlarmRepository
     let editTarget: CommonAlarm?
     @Published var hour: Int
     @Published var minute: Int
     @Published var remark: String
     
-    init(repository: AlarmRepository = AlarmStorageRepository.shared, editTarget: CommonAlarm? = nil) {
-        self.repository = repository
+    init(editTarget: CommonAlarm? = nil) {
         self.editTarget = editTarget
         if let editTarget = editTarget {
             hour = editTarget.hour
@@ -31,10 +29,10 @@ class CommonAlarmFormViewModel: ObservableObject {
     
     func submit() {
         if let editTarget = editTarget {
-            repository.updateCommonAlarm(editTarget, hour: hour, minute: minute, remark: remark)
+            CommonAlarmStore.shared.update(editTarget, hour: hour, minute: minute, remark: remark)
         } else {
             let commonAlarm = CommonAlarm(hour: hour, minute: minute, remark: remark)
-            repository.addCommonAlarm(commonAlarm)
+            CommonAlarmStore.shared.add(commonAlarm)
         }
     }
 }

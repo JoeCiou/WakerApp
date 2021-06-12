@@ -11,7 +11,24 @@ import SwiftUI
 struct WakerApp: App {
     var body: some Scene {
         WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        TabView {
             AlarmsView(viewModel: AlarmsViewModel())
+                .tabItem {
+                    Image(systemName: "clock")
+                    Text("鬧鐘")
+                }
+            WordsView(viewModel: WordsViewModel())
+                .tabItem {
+                    Image(systemName: "book")
+                    Text("學習")
+                }
         }
     }
 }

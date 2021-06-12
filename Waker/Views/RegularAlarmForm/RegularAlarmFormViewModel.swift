@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 class RegularAlarmFormViewModel: ObservableObject {
-    let repository: AlarmRepository
     let editTarget: RegularAlarm?
     @Published var hour: Int
     @Published var minute: Int
@@ -17,8 +16,7 @@ class RegularAlarmFormViewModel: ObservableObject {
     @Published var remark: String
     @Published var isOn: Bool
     
-    init(repository: AlarmRepository = AlarmStorageRepository.shared, editTarget: RegularAlarm? = nil) {
-        self.repository = repository
+    init(editTarget: RegularAlarm? = nil) {
         self.editTarget = editTarget
         if let editTarget = editTarget {
             hour = editTarget.hour
@@ -38,10 +36,10 @@ class RegularAlarmFormViewModel: ObservableObject {
     
     func submit() {
         if let editTarget = editTarget {
-            repository.updateRegularAlarm(editTarget, hour: hour, minute: minute, repeatSettings: repeatSettings, remark: remark, isOn: isOn)
+            RegularAlarmStore.shared.update(editTarget, hour: hour, minute: minute, repeatSettings: repeatSettings, remark: remark, isOn: isOn)
         } else {
             let regularAlarm = RegularAlarm(hour: hour, minute: minute, repeatSettings: repeatSettings, remark: remark, isOn: isOn)
-            repository.addRegularAlarm(regularAlarm)
+            RegularAlarmStore.shared.add(regularAlarm)
         }
     }
 }

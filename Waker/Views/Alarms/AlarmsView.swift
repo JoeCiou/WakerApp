@@ -96,6 +96,7 @@ struct AlarmsView: View {
         .sheet(item: $regularAlarmSheetData) { sheetData in
             RegularAlarmFormView(viewModel: RegularAlarmFormViewModel(editTarget: sheetData.editTarget))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -161,7 +162,16 @@ struct AlarmRow: View {
 
 struct AlarmsView_Previews: PreviewProvider {
     static var previews: some View {
-        AlarmsView(viewModel: AlarmsViewModel(repository: AlarmMockRepository()))
+        let mockCommonAlarms = [
+            CommonAlarm(hour: 08, minute: 40, remark: ""),
+            CommonAlarm(hour: 14, minute: 20, remark: ""),
+            CommonAlarm(hour: 17, minute: 00, remark: ""),
+        ]
+        let mockRegularAlarms = [
+            RegularAlarm(hour: 08, minute: 30, repeatSettings: RepeatSettings(weeks: [0,1,2,3,4]), remark: "上班", isOn: true),
+            RegularAlarm(hour: 10, minute: 30, repeatSettings: RepeatSettings(weeks: [5,6]), remark: "讀書", isOn: false),
+        ]
+        AlarmsView(viewModel: AlarmsViewModel(mockCommonAlarms: mockCommonAlarms, mockRegularAlarms: mockRegularAlarms))
             .environment(\.editMode, Binding.constant(EditMode.inactive))
     }
 }
