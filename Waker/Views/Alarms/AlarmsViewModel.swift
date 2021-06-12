@@ -13,9 +13,9 @@ class AlarmsViewModel: ObservableObject {
     private var commonAlarmsCanceller: AnyCancellable?
     private var regularAlarmsCanceller: AnyCancellable?
     
-    private var commonAlarms: [CommonAlarm] = []
-    @Published var regularAlarms: [RegularAlarm] = []
-    @Published var upcomingAlarms: [Alarm] = []
+    private var commonAlarms = [CommonAlarm]()
+    @Published var regularAlarms = [RegularAlarm]()
+    @Published var upcomingAlarms = [Alarm]()
     
     init() {
         self.commonAlarmsCanceller = CommonAlarmStore.shared.dataPublisher.sink { commonAlarms in

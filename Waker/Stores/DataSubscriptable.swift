@@ -13,11 +13,3 @@ protocol DataSubscriptable {
     
     var dataPublisher: AnyPublisher<[Model], Never> { get }
 }
-
-class AnyDataSubscriptable<Model>: DataSubscriptable {
-    var dataPublisher: AnyPublisher<[Model], Never>
-    
-    init(_ dataPublisher: AnyPublisher<[Model], Never>) {
-        self.dataPublisher = dataPublisher
-    }
-}

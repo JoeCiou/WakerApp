@@ -25,6 +25,8 @@
 		40578FB02670F90900BD3644 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40578FAF2670F90900BD3644 /* Word.swift */; };
 		40834AB92673AB50006A2C65 /* WordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40834AB82673AB50006A2C65 /* WordsView.swift */; };
 		40834AC52674C385006A2C65 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40834AC42674C385006A2C65 /* String+Extension.swift */; };
+		40834AC72674E570006A2C65 /* WordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40834AC62674E570006A2C65 /* WordStore.swift */; };
+		40834AC92674EC31006A2C65 /* WordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40834AC82674EC31006A2C65 /* WordRepository.swift */; };
 		409A7139266A0E1B00F78768 /* CommonAlarmFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A7138266A0E1B00F78768 /* CommonAlarmFormView.swift */; };
 		409A713B266A0E4300F78768 /* CommonAlarmFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409A713A266A0E4300F78768 /* CommonAlarmFormViewModel.swift */; };
 		40A0DDFC266E02E300C93844 /* RegularAlarmFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0DDFB266E02E300C93844 /* RegularAlarmFormViewModel.swift */; };
@@ -81,6 +83,8 @@
 		40578FAF2670F90900BD3644 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		40834AB82673AB50006A2C65 /* WordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsView.swift; sourceTree = "<group>"; };
 		40834AC42674C385006A2C65 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		40834AC62674E570006A2C65 /* WordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordStore.swift; sourceTree = "<group>"; };
+		40834AC82674EC31006A2C65 /* WordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRepository.swift; sourceTree = "<group>"; };
 		409A7138266A0E1B00F78768 /* CommonAlarmFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlarmFormView.swift; sourceTree = "<group>"; };
 		409A713A266A0E4300F78768 /* CommonAlarmFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlarmFormViewModel.swift; sourceTree = "<group>"; };
 		40A0DDFB266E02E300C93844 /* RegularAlarmFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularAlarmFormViewModel.swift; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				4053F2B526737A75001F08C2 /* Repository.swift */,
+				40834AC82674EC31006A2C65 /* WordRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				40B787522672714F007D9901 /* DataSubscriptable.swift */,
 				40B7875A26727922007D9901 /* CommonAlarmStore.swift */,
 				40B787582672778B007D9901 /* RegularAlarmStore.swift */,
+				40834AC62674E570006A2C65 /* WordStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -470,8 +476,10 @@
 				40B7875B26727922007D9901 /* CommonAlarmStore.swift in Sources */,
 				40A0DE10266F96B900C93844 /* Alarm.swift in Sources */,
 				40A0DDFC266E02E300C93844 /* RegularAlarmFormViewModel.swift in Sources */,
+				40834AC72674E570006A2C65 /* WordStore.swift in Sources */,
 				40A0DDFE266E02F400C93844 /* RegularAlarmFormView.swift in Sources */,
 				409A7139266A0E1B00F78768 /* CommonAlarmFormView.swift in Sources */,
+				40834AC92674EC31006A2C65 /* WordRepository.swift in Sources */,
 				403E8529266BB6A00081E775 /* RegularAlarm.swift in Sources */,
 				401C61FF265F8DAB00E2388E /* AlarmsViewModel.swift in Sources */,
 				40834AC52674C385006A2C65 /* String+Extension.swift in Sources */,

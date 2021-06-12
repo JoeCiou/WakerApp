@@ -9,16 +9,21 @@ import Foundation
 import Combine
 
 class WordsViewModel: ObservableObject {
-    let wordService: WordService = WordService.shared
+    @Published var words = [Word]()
+    @Published var fetchResult: DataFetchResult?
+    @Published var isFetching: Bool = false
     
-    @Published var words: [Word]
-    @Published var fetchError: DataFetchableError?
-    @Published var anwserInput: String = ""
-    
-    var canceller: AnyCancellable?
+    var dataCanceller: AnyCancellable?
+    var fetchResultCanceller: AnyCancellable?
     
     init() {
-        self.words = [Word]()
+        dataCanceller = WordRepository.shared.dataSubject.sink { words in
+            self.words = words
+        }
+        fetchResultCanceller = WordRepository.shared.fetchResultSubject.sink { fetchResult in
+            self.isFetching = false
+            self.fetchResult = fetchResult
+        }
     }
     
     #if DEBUG
@@ -26,19 +31,14 @@ class WordsViewModel: ObservableObject {
         self.words = mockWords
     }
     #endif
+    
+    deinit {
+        self.dataCanceller?.cancel()
+        self.fetchResultCanceller?.cancel()
+    }
 
     func fetch() {
-        canceller = wordService.fetch()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                self.fetchError = nil
-            case .failure(let error):
-                self.fetchError = error
-            }
-        }, receiveValue: { questions in
-            self.words = questions
-        })
+        isFetching = true
+        WordRepository.shared.fetch()
     }
 }

@@ -9,15 +9,18 @@ import Foundation
 import Combine
 import RealmSwift
 
-class CommonAlarmStore: AnyDataSubscriptable<CommonAlarm> {
+class CommonAlarmStore: DataSubscriptable {
+    typealias Model = CommonAlarm
+    
     static let shared = CommonAlarmStore()
     
     private let realm = try! Realm()
     private var commonAlarms: Results<CommonAlarm>
+    var dataPublisher: AnyPublisher<[CommonAlarm], Never>
     
     private init() {
         commonAlarms = realm.objects(CommonAlarm.self)
-        let publisher = commonAlarms.collectionPublisher
+        dataPublisher = commonAlarms.collectionPublisher
             .map { input in
                 return input.sorted { commonAlarm1, commonAlarm2 in
                     let date1 = DateComponents(calendar: Calendar.current, hour: commonAlarm1.hour, minute: commonAlarm1.minute).date!
@@ -27,8 +30,6 @@ class CommonAlarmStore: AnyDataSubscriptable<CommonAlarm> {
             }
             .replaceError(with: [CommonAlarm]())
             .eraseToAnyPublisher()
-        
-        super.init(publisher)
     }
     
     func add(_ commonAlarm: CommonAlarm) {
