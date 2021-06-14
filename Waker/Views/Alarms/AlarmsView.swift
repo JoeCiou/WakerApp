@@ -121,35 +121,34 @@ struct AlarmHeader: View {
 }
 
 struct AlarmRow: View {
-    var alarm: Alarm
+    let alarm: Alarm
     @Binding var isOn: Bool
     let action: () -> Void
-    
+
     @Environment(\.editMode) private var editMode: Binding<EditMode>?
     
     var body: some View {
+        Text("鬧鐘")
         if alarm.isInvalidated {
             EmptyView()
         } else {
-            let content = VStack(alignment: .leading) {
-                Text(TimeUtils.getTimeString(hour: alarm.hour, minute: alarm.minute))
-                    .font(.largeTitle)
-                if !alarm.remark.isEmpty {
-                    Text(alarm.remark)
-                        .font(.subheadline)
-                }
-                switch alarm {
-                case .common(_):
-                    Text("一次性鬧鐘")
-                        .font(.subheadline)
-                case .regular(let regularAlarm):
-                    Text("固定鬧鐘，" + TimeUtils.getWeeksString(weeks: regularAlarm.repeatSettings.weeks))
-                        .font(.subheadline)
-                }
-            }
-            
             HStack {
-                content
+                VStack(alignment: .leading) {
+                    Text(TimeUtils.getTimeString(hour: alarm.hour, minute: alarm.minute))
+                        .font(.largeTitle)
+                    if !alarm.remark.isEmpty {
+                        Text(alarm.remark)
+                            .font(.subheadline)
+                    }
+                    switch alarm {
+                    case .common(_):
+                        Text("一次性鬧鐘")
+                            .font(.subheadline)
+                    case .regular(let regularAlarm):
+                        Text("固定鬧鐘，" + TimeUtils.getWeeksString(weeks: regularAlarm.repeatSettings.weeks))
+                            .font(.subheadline)
+                    }
+                }
                 Spacer()
                 ZStack(alignment: .trailing) {
                     Toggle("", isOn: $isOn)

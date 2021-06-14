@@ -32,8 +32,10 @@ class WordsViewModel: ObservableObject {
     }
     
     func connectDatabase() {
-        dataCanceller = WordRepository.shared.connect().sink { words in
-            self.words = words
+        if (dataCanceller == nil) {
+            dataCanceller = WordRepository.shared.connect().sink { words in
+                self.words = words
+            }
         }
     }
 

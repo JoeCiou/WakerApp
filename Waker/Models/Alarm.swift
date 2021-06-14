@@ -13,12 +13,12 @@ enum Alarm {
 }
 
 extension Alarm: Identifiable {
-    var id: ObjectIdentifier {
+    var id: String {
         switch self {
         case .common(let commonAlarm):
-            return commonAlarm.id
+            return commonAlarm._id.stringValue
         case .regular(let regularAlarm):
-            return regularAlarm.id
+            return regularAlarm._id.stringValue
         }
     }
     

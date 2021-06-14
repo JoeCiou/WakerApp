@@ -37,13 +37,17 @@ class AlarmsViewModel: ObservableObject {
     }
     
     func connectDatabase() {
-        commonAlarmsCanceller = CommonAlarmStore.shared.connect().sink { commonAlarms in
-            self.commonAlarms = commonAlarms
-            self.updateUpcomingAlarms()
+        if (commonAlarmsCanceller == nil) {
+            commonAlarmsCanceller = CommonAlarmStore.shared.connect().sink { commonAlarms in
+                self.commonAlarms = commonAlarms
+                self.updateUpcomingAlarms()
+            }
         }
-        regularAlarmsCanceller = RegularAlarmStore.shared.connect().sink { regularAlarms in
-            self.regularAlarms = regularAlarms
-            self.updateUpcomingAlarms()
+        if (regularAlarmsCanceller == nil) {
+            regularAlarmsCanceller = RegularAlarmStore.shared.connect().sink { regularAlarms in
+                self.regularAlarms = regularAlarms
+                self.updateUpcomingAlarms()
+            }
         }
     }
     

@@ -34,14 +34,13 @@ class RegularAlarmStore: DataSubscriptable {
     func connect() -> AnyPublisher<[RegularAlarm], Never> {
         dataSubject = PassthroughSubject<[RegularAlarm], Never>()
         regularAlarms = realm.objects(RegularAlarm.self)
+            .sorted(by: [
+                SortDescriptor(keyPath: #keyPath(RegularAlarm.hour), ascending: true),
+                SortDescriptor(keyPath: #keyPath(RegularAlarm.minute), ascending: true),
+                SortDescriptor(keyPath: #keyPath(RegularAlarm._id), ascending: true)
+            ])
         canceller = regularAlarms!.collectionPublisher
-            .map { input in
-                return input.sorted { regularAlarm1, regularAlarm2 in
-                    let date1 = DateComponents(calendar: Calendar.current, hour: regularAlarm1.hour, minute: regularAlarm1.minute).date!
-                    let date2 = DateComponents(calendar: Calendar.current, hour: regularAlarm2.hour, minute: regularAlarm2.minute).date!
-                    return date1 != date2 ? date1 < date2: regularAlarm1._id < regularAlarm2._id
-                }
-            }
+            .map { Array($0) }
             .replaceError(with: [RegularAlarm]())
             .sink { regularAlarms in
                 self.dataSubject?.send(regularAlarms)

@@ -55,11 +55,11 @@ class WordRepository: Repository {
                 case .failure(let error):
                     self.fetchResultSubject?.send(.failed(error))
                 }
+                self.serviceCanceller?.cancel()
+                self.fetchResultSubject = nil
             } receiveValue: { words in
                 self.dataSubject?.send(words)
                 WordStore.shared.sync(data: words)
-                self.serviceCanceller?.cancel()
-                self.fetchResultSubject = nil
             }
         
         return fetchResultSubject!.eraseToAnyPublisher()
