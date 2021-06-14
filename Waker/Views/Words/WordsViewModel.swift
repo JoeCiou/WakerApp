@@ -17,13 +17,7 @@ class WordsViewModel: ObservableObject {
     var fetchResultCanceller: AnyCancellable?
     
     init() {
-        dataCanceller = WordRepository.shared.dataSubject.sink { words in
-            self.words = words
-        }
-        fetchResultCanceller = WordRepository.shared.fetchResultSubject.sink { fetchResult in
-            self.isFetching = false
-            self.fetchResult = fetchResult
-        }
+        
     }
     
     #if DEBUG
@@ -36,9 +30,19 @@ class WordsViewModel: ObservableObject {
         self.dataCanceller?.cancel()
         self.fetchResultCanceller?.cancel()
     }
+    
+    func connectDatabase() {
+        dataCanceller = WordRepository.shared.connect().sink { words in
+            self.words = words
+        }
+    }
 
     func fetch() {
         isFetching = true
-        WordRepository.shared.fetch()
+        fetchResultCanceller = WordRepository.shared.fetch().sink { fetchResult in
+            self.isFetching = false
+            self.fetchResult = fetchResult
+            self.fetchResultCanceller?.cancel()
+        }
     }
 }

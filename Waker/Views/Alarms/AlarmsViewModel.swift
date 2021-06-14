@@ -18,27 +18,33 @@ class AlarmsViewModel: ObservableObject {
     @Published var upcomingAlarms = [Alarm]()
     
     init() {
-        self.commonAlarmsCanceller = CommonAlarmStore.shared.dataPublisher.sink { commonAlarms in
-            self.commonAlarms = commonAlarms
-            self.updateUpcomingAlarms()
-        }
-        self.regularAlarmsCanceller = RegularAlarmStore.shared.dataPublisher.sink { regularAlarms in
-            self.regularAlarms = regularAlarms
-            self.updateUpcomingAlarms()
-        }
+        
     }
     
     #if DEBUG
     init(mockCommonAlarms: [CommonAlarm], mockRegularAlarms: [RegularAlarm]) {
-        self.commonAlarms = mockCommonAlarms
-        self.regularAlarms = mockRegularAlarms
-        self.updateUpcomingAlarms()
+        commonAlarms = mockCommonAlarms
+        regularAlarms = mockRegularAlarms
+        updateUpcomingAlarms()
     }
     #endif
     
     deinit {
-        self.commonAlarmsCanceller?.cancel()
-        self.regularAlarmsCanceller?.cancel()
+        commonAlarmsCanceller?.cancel()
+        regularAlarmsCanceller?.cancel()
+        CommonAlarmStore.shared.disconnect()
+        RegularAlarmStore.shared.disconnect()
+    }
+    
+    func connectDatabase() {
+        commonAlarmsCanceller = CommonAlarmStore.shared.connect().sink { commonAlarms in
+            self.commonAlarms = commonAlarms
+            self.updateUpcomingAlarms()
+        }
+        regularAlarmsCanceller = RegularAlarmStore.shared.connect().sink { regularAlarms in
+            self.regularAlarms = regularAlarms
+            self.updateUpcomingAlarms()
+        }
     }
     
     private func updateUpcomingAlarms() {

@@ -97,6 +97,10 @@ struct AlarmsView: View {
             RegularAlarmFormView(viewModel: RegularAlarmFormViewModel(editTarget: sheetData.editTarget))
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            // It will still be called before the view hasn't appeared: https://developer.apple.com/forums/thread/656655
+            viewModel.connectDatabase()
+        }
     }
 }
 

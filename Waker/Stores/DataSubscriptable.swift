@@ -11,5 +11,7 @@ import Combine
 protocol DataSubscriptable {
     associatedtype Model
     
-    var dataPublisher: AnyPublisher<[Model], Never> { get }
+    var isConnected: Bool { get }
+    func connect() -> AnyPublisher<[Model], Never>
+    func disconnect()
 }

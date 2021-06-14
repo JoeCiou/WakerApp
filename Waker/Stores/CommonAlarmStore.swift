@@ -15,12 +15,26 @@ class CommonAlarmStore: DataSubscriptable {
     static let shared = CommonAlarmStore()
     
     private let realm = try! Realm()
-    private var commonAlarms: Results<CommonAlarm>
-    var dataPublisher: AnyPublisher<[CommonAlarm], Never>
+    private var commonAlarms: Results<CommonAlarm>?
+    private var dataSubject: PassthroughSubject<[CommonAlarm], Never>?
+    private var canceller: AnyCancellable?
+    
+    var isConnected: Bool {
+        canceller != nil
+    }
     
     private init() {
+        
+    }
+    
+    deinit {
+        disconnect()
+    }
+    
+    func connect() -> AnyPublisher<[CommonAlarm], Never> {
+        dataSubject = PassthroughSubject<[CommonAlarm], Never>()
         commonAlarms = realm.objects(CommonAlarm.self)
-        dataPublisher = commonAlarms.collectionPublisher
+        canceller = commonAlarms!.collectionPublisher
             .map { input in
                 return input.sorted { commonAlarm1, commonAlarm2 in
                     let date1 = DateComponents(calendar: Calendar.current, hour: commonAlarm1.hour, minute: commonAlarm1.minute).date!
@@ -29,7 +43,17 @@ class CommonAlarmStore: DataSubscriptable {
                 }
             }
             .replaceError(with: [CommonAlarm]())
-            .eraseToAnyPublisher()
+            .sink { commonAlarms in
+                self.dataSubject?.send(commonAlarms)
+            }
+        
+        return dataSubject!.eraseToAnyPublisher()
+    }
+    
+    func disconnect() {
+        canceller?.cancel()
+        commonAlarms = nil
+        dataSubject = nil
     }
     
     func add(_ commonAlarm: CommonAlarm) {

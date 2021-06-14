@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 class WordService: DataFetchable {
+    typealias Model = Word
+    
     static let shared = WordService()
     
     private init() {

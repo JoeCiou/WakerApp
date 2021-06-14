@@ -15,18 +15,44 @@ class WordStore: DataSubscriptable {
     static let shared = WordStore()
     
     private let realm = try! Realm()
-    private var words: Results<Word>
-    var dataPublisher: AnyPublisher<[Word], Never>
+    private var words: Results<Word>?
+    private var dataSubject: PassthroughSubject<[Word], Never>?
+    private var canceller: AnyCancellable?
+    
+    var isConnected: Bool {
+        canceller != nil
+    }
     
     private init() {
+        
+    }
+    
+    deinit {
+        disconnect()
+    }
+    
+    func connect() -> AnyPublisher<[Word], Never> {
+        dataSubject = PassthroughSubject<[Word], Never>()
         words = realm.objects(Word.self)
-        dataPublisher = words.collectionPublisher
+        canceller = words!.collectionPublisher
             .map({ Array($0) })
             .replaceError(with: [Word]())
-            .eraseToAnyPublisher()
+            .sink { words in
+                self.dataSubject?.send(words)
+            }
+        
+        return dataSubject!.eraseToAnyPublisher()
+    }
+    
+    func disconnect() {
+        canceller?.cancel()
+        words = nil
+        dataSubject = nil
     }
     
     func sync(data: [Word]) {
+        let words = realm.objects(Word.self)
+        
         try! realm.write {
             realm.delete(words)
             realm.add(data)

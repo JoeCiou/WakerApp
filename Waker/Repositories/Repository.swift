@@ -11,9 +11,10 @@ import Combine
 protocol Repository {
     associatedtype Model
     
-    var dataSubject: CurrentValueSubject<[Model], Never> { get }
-    var fetchResultSubject: PassthroughSubject<DataFetchResult, Never> { get }
-    func fetch()
+    var isConnected: Bool { get }
+    func connect() -> AnyPublisher<[Model], Never>
+    func disconnect()
+    func fetch() -> AnyPublisher<DataFetchResult, Never>
 }
 
 enum DataFetchResult {
