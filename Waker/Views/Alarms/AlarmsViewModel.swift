@@ -38,15 +38,15 @@ class AlarmsViewModel: ObservableObject {
     
     func connectDatabase() {
         if (commonAlarmsCanceller == nil) {
-            commonAlarmsCanceller = CommonAlarmStore.shared.connect().sink { commonAlarms in
-                self.commonAlarms = commonAlarms
-                self.updateUpcomingAlarms()
+            commonAlarmsCanceller = CommonAlarmStore.shared.connect().sink { [weak self] commonAlarms in
+                self?.commonAlarms = commonAlarms
+                self?.updateUpcomingAlarms()
             }
         }
         if (regularAlarmsCanceller == nil) {
-            regularAlarmsCanceller = RegularAlarmStore.shared.connect().sink { regularAlarms in
-                self.regularAlarms = regularAlarms
-                self.updateUpcomingAlarms()
+            regularAlarmsCanceller = RegularAlarmStore.shared.connect().sink { [weak self] regularAlarms in
+                self?.regularAlarms = regularAlarms
+                self?.updateUpcomingAlarms()
             }
         }
     }

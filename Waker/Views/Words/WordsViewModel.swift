@@ -33,18 +33,18 @@ class WordsViewModel: ObservableObject {
     
     func connectDatabase() {
         if (dataCanceller == nil) {
-            dataCanceller = WordRepository.shared.connect().sink { words in
-                self.words = words
+            dataCanceller = WordRepository.shared.connect().sink { [weak self] words in
+                self?.words = words
             }
         }
     }
 
     func fetch() {
         isFetching = true
-        fetchResultCanceller = WordRepository.shared.fetch().sink { fetchResult in
-            self.isFetching = false
-            self.fetchResult = fetchResult
-            self.fetchResultCanceller?.cancel()
+        fetchResultCanceller = WordRepository.shared.fetch().sink { [weak self] fetchResult in
+            self?.isFetching = false
+            self?.fetchResult = fetchResult
+            self?.fetchResultCanceller?.cancel()
         }
     }
 }

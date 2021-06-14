@@ -12,17 +12,22 @@ struct TimeField: View {
     @Binding var minute: Int
     
     var body: some View {
+        // Cause memory leak if using the UIs with a binding variable in List, like Toggle, DatePicker.
+        let dateSelection: Binding<Date> = Binding<Date>(
+            get: {
+                DateComponents(calendar: Calendar.current, hour: hour, minute: minute).date!
+            },
+            set: {
+                hour = Calendar.current.component(.hour, from: $0)
+                minute = Calendar.current.component(.minute, from: $0)
+            }
+        )
+        
         HStack() {
             Text("時間").font(.headline)
             Spacer()
-            DatePicker("", selection: Binding<Date>(
-                get: { DateComponents(calendar: Calendar.current, hour: hour, minute: minute).date! },
-                set: {
-                    hour = Calendar.current.component(.hour, from: $0)
-                    minute = Calendar.current.component(.minute, from: $0)
-                }
-            ), displayedComponents: .hourAndMinute)
-            .datePickerStyle(GraphicalDatePickerStyle())
+            DatePicker("", selection: dateSelection, displayedComponents: .hourAndMinute)
+                .datePickerStyle(GraphicalDatePickerStyle())
         }
         .frame(minHeight: 100, alignment: .center)
     }

@@ -37,7 +37,7 @@ class WordStore: DataSubscriptable {
         canceller = words!.collectionPublisher
             .map({ Array($0) })
             .replaceError(with: [Word]())
-            .sink { words in
+            .sink { [unowned self] words in
                 self.dataSubject?.send(words)
             }
         

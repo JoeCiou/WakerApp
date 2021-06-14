@@ -42,7 +42,7 @@ class CommonAlarmStore: DataSubscriptable {
         canceller = commonAlarms!.collectionPublisher
             .map { Array($0) }
             .replaceError(with: [CommonAlarm]())
-            .sink { commonAlarms in
+            .sink { [unowned self] commonAlarms in
                 self.dataSubject?.send(commonAlarms)
             }
         

@@ -51,7 +51,7 @@ struct RegularAlarmFormView: View {
                 leading: Button("取消") {
                     presentationMode.wrappedValue.dismiss()
                 },
-                trailing: Button("儲存") {
+                trailing: Button("儲存") { [unowned viewModel] in
                     viewModel.submit()
                     presentationMode.wrappedValue.dismiss()
                 }

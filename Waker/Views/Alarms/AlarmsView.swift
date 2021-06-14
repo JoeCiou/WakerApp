@@ -39,33 +39,33 @@ struct AlarmsView: View {
                     ForEach(viewModel.upcomingAlarms) { alarm in
                         switch alarm {
                         case .common(let commonAlarm):
-                            AlarmRow(alarm: alarm, isOn: Binding<Bool>(get: { !commonAlarm.isInvalidated }, set: { _ in viewModel.deleteAlarm(alarm) }), action: {
+                            AlarmRow(alarm: alarm, isOn: Binding<Bool>(get: { !commonAlarm.isInvalidated }, set: { [weak viewModel] _ in viewModel?.deleteAlarm(alarm) }), action: {
                                 if editMode!.wrappedValue == EditMode.active {
                                     commonAlarmSheetData = CommonAlarmSheetData(editTarget: commonAlarm)
                                 }
                             })
                         case .regular(let regularAlarm):
-                            AlarmRow(alarm: alarm, isOn: Binding<Bool>(get: { regularAlarm.isOn }, set: { _ in viewModel.switchRegularAlarm(regularAlarm) }), action: {
+                            AlarmRow(alarm: alarm, isOn: Binding<Bool>(get: { !regularAlarm.isInvalidated && regularAlarm.isOn }, set: { [unowned viewModel] _ in viewModel.switchRegularAlarm(regularAlarm) }), action: {
                                 if editMode!.wrappedValue == EditMode.active {
                                     regularAlarmSheetData = RegularAlarmSheetData(editTarget: regularAlarm)
                                 }
                             })
                         }
-                    }.onDelete(perform: { indexSet in
+                    }.onDelete { [unowned viewModel] indexSet in
                         viewModel.deleteUpcomingAlarms(at: indexSet)
-                    })
+                    }
                 }
                 // Regular alarms
                 Section(header: AlarmHeader(title: "固定鬧鐘")) {
                     ForEach(viewModel.regularAlarms) { regularAlarm in
-                        AlarmRow(alarm: Alarm.regular(regularAlarm), isOn: Binding<Bool>(get: { regularAlarm.isOn }, set: { _ in viewModel.switchRegularAlarm(regularAlarm) }), action: {
+                        AlarmRow(alarm: Alarm.regular(regularAlarm), isOn: Binding<Bool>(get: { !regularAlarm.isInvalidated && regularAlarm.isOn }, set: { [unowned viewModel] _ in viewModel.switchRegularAlarm(regularAlarm) }), action: {
                             if editMode!.wrappedValue == EditMode.active {
                                 regularAlarmSheetData = RegularAlarmSheetData(editTarget: regularAlarm)
                             }
                         })
-                    }.onDelete(perform: { indexSet in
+                    }.onDelete{ [unowned viewModel] indexSet in
                         viewModel.deleteRegularAlarms(at: indexSet)
-                    })
+                    }
                 }
             }
             .environment(\.editMode, editMode)
@@ -97,7 +97,7 @@ struct AlarmsView: View {
             RegularAlarmFormView(viewModel: RegularAlarmFormViewModel(editTarget: sheetData.editTarget))
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear {
+        .onAppear { [unowned viewModel] in
             // It will still be called before the view hasn't appeared: https://developer.apple.com/forums/thread/656655
             viewModel.connectDatabase()
         }
@@ -128,7 +128,6 @@ struct AlarmRow: View {
     @Environment(\.editMode) private var editMode: Binding<EditMode>?
     
     var body: some View {
-        Text("鬧鐘")
         if alarm.isInvalidated {
             EmptyView()
         } else {
@@ -151,6 +150,7 @@ struct AlarmRow: View {
                 }
                 Spacer()
                 ZStack(alignment: .trailing) {
+                    // Cause memory leak if using the UIs with a binding variable in List, like Toggle, DatePicker.
                     Toggle("", isOn: $isOn)
                         .opacity(editMode!.wrappedValue.isEditing ? 0: 1)
                     Image(systemName: "chevron.forward").opacity(0.2)

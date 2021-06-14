@@ -22,27 +22,25 @@ struct CommonAlarmFormView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    Section() {
-                        TimeField(hour: $viewModel.hour, minute: $viewModel.minute)
-                    }
-                    Section() {
-                        buildFieldRow(title: "標籤") {
-                            TextField("", text: $viewModel.remark)
-                                .multilineTextAlignment(.trailing)
-                        }
+            List {
+                Section() {
+                    TimeField(hour: $viewModel.hour, minute: $viewModel.minute)
+                }
+                Section() {
+                    buildFieldRow(title: "標籤") {
+                        TextField("", text: $viewModel.remark)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
-                .listStyle(GroupedListStyle())
             }
+            .listStyle(GroupedListStyle())
             .navigationTitle("新鬧鐘")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button("取消") {
                     presentationMode.wrappedValue.dismiss()
                 },
-                trailing: Button("儲存") {
+                trailing: Button("儲存") { [unowned viewModel] in
                     viewModel.submit()
                     presentationMode.wrappedValue.dismiss()
                 }

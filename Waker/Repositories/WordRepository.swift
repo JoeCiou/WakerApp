@@ -27,13 +27,13 @@ class WordRepository: Repository {
     }
     
     deinit {
-        storeCanceller?.cancel()
+        disconnect()
         serviceCanceller?.cancel()
     }
     
     func connect() -> AnyPublisher<[Word], Never> {
         dataSubject = PassthroughSubject<[Word], Never>()
-        storeCanceller = WordStore.shared.connect().sink { words in
+        storeCanceller = WordStore.shared.connect().sink { [unowned self] words in
             self.dataSubject?.send(words)
         }
         
@@ -42,13 +42,14 @@ class WordRepository: Repository {
     
     func disconnect() {
         storeCanceller?.cancel()
+        WordStore.shared.disconnect()
     }
     
     func fetch() -> AnyPublisher<DataFetchResult, Never> {
         fetchResultSubject = PassthroughSubject<DataFetchResult, Never>()
         serviceCanceller = WordService.shared.fetch()
             .receive(on: DispatchQueue.main)
-            .sink { completion in
+            .sink { [unowned self] completion in
                 switch completion {
                 case .finished:
                     self.fetchResultSubject?.send(.completed)

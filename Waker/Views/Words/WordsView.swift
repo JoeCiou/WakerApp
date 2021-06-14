@@ -47,14 +47,14 @@ struct WordsView: View {
             }
             .navigationTitle("單字")
             .navigationBarItems(
-                trailing: Button(action: {
+                trailing: Button(action: { [unowned viewModel] in
                     viewModel.fetch()
                 }) {
                     Text("更新")
                 }
             )
         }
-        .onAppear {
+        .onAppear { [unowned viewModel] in
             // It will still be called before the view hasn't appeared: https://developer.apple.com/forums/thread/656655
             viewModel.connectDatabase()
         }
