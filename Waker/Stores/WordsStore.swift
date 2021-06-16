@@ -9,10 +9,18 @@ import Foundation
 import Combine
 import RealmSwift
 
-class WordStore: DataSubscriptable {
-    typealias Model = Word
-    
-    static let shared = WordStore()
+protocol WordsStore {
+    var isConnected: Bool { get }
+    func connect() -> AnyPublisher<[Word], Never>
+    func disconnect()
+}
+
+protocol WordsSyncable {
+    func sync(data: [Word])
+}
+
+class WordsRealmStore: WordsStore, WordsSyncable {
+    static let shared = WordsRealmStore()
     
     private let realm = try! Realm()
     private var words: Results<Word>?
@@ -20,7 +28,7 @@ class WordStore: DataSubscriptable {
     private var canceller: AnyCancellable?
     
     var isConnected: Bool {
-        canceller != nil
+        dataSubject != nil
     }
     
     private init() {

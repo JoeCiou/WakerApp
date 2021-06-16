@@ -29,10 +29,10 @@ class CommonAlarmFormViewModel: ObservableObject {
     
     func submit() {
         if let editTarget = editTarget {
-            CommonAlarmStore.shared.update(editTarget, hour: hour, minute: minute, remark: remark)
+            CommonAlarmsRepository.shared.update(editTarget, hour: hour, minute: minute, remark: remark)
         } else {
             let commonAlarm = CommonAlarm(hour: hour, minute: minute, remark: remark)
-            CommonAlarmStore.shared.add(commonAlarm)
+            CommonAlarmsRepository.shared.add(commonAlarm)
         }
     }
 }

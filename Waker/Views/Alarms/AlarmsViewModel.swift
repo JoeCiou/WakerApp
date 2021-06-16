@@ -7,22 +7,25 @@
 
 import Foundation
 import Combine
-import RealmSwift
 
 class AlarmsViewModel: ObservableObject {
-    private var commonAlarmsCanceller: AnyCancellable?
-    private var regularAlarmsCanceller: AnyCancellable?
+    private let isMock: Bool
     
     private var commonAlarms = [CommonAlarm]()
     @Published var regularAlarms = [RegularAlarm]()
     @Published var upcomingAlarms = [Alarm]()
     
+    private var commonAlarmsCanceller: AnyCancellable?
+    private var regularAlarmsCanceller: AnyCancellable?
+    
     init() {
-        
+        isMock = false
+        connect()
     }
     
     #if DEBUG
     init(mockCommonAlarms: [CommonAlarm], mockRegularAlarms: [RegularAlarm]) {
+        isMock = true
         commonAlarms = mockCommonAlarms
         regularAlarms = mockRegularAlarms
         updateUpcomingAlarms()
@@ -30,25 +33,33 @@ class AlarmsViewModel: ObservableObject {
     #endif
     
     deinit {
-        commonAlarmsCanceller?.cancel()
-        regularAlarmsCanceller?.cancel()
-        CommonAlarmStore.shared.disconnect()
-        RegularAlarmStore.shared.disconnect()
+        if (!isMock) {
+            disconnect()
+        }
     }
     
-    func connectDatabase() {
+    func connect() {
         if (commonAlarmsCanceller == nil) {
-            commonAlarmsCanceller = CommonAlarmStore.shared.connect().sink { [weak self] commonAlarms in
+            let (dataPublisher, _) = CommonAlarmsRepository.shared.connect()
+            commonAlarmsCanceller = dataPublisher.sink { [weak self] commonAlarms in
                 self?.commonAlarms = commonAlarms
                 self?.updateUpcomingAlarms()
             }
         }
         if (regularAlarmsCanceller == nil) {
-            regularAlarmsCanceller = RegularAlarmStore.shared.connect().sink { [weak self] regularAlarms in
+            let (dataPublisher, _) = RegularAlarmsRepository.shared.connect()
+            regularAlarmsCanceller = dataPublisher.sink { [weak self] regularAlarms in
                 self?.regularAlarms = regularAlarms
                 self?.updateUpcomingAlarms()
             }
         }
+    }
+    
+    func disconnect() {
+        commonAlarmsCanceller?.cancel()
+        regularAlarmsCanceller?.cancel()
+        CommonAlarmsRepository.shared.disconnect()
+        RegularAlarmsRepository.shared.disconnect()
     }
     
     private func updateUpcomingAlarms() {
@@ -69,15 +80,15 @@ class AlarmsViewModel: ObservableObject {
     }
     
     func switchRegularAlarm(_ regularAlarm: RegularAlarm) {
-        RegularAlarmStore.shared.update(regularAlarm, isOn: !regularAlarm.isOn)
+        RegularAlarmsRepository.shared.update(regularAlarm, isOn: !regularAlarm.isOn)
     }
     
     func deleteAlarm(_ alarm: Alarm) {
         switch alarm {
         case .common(let commonAlarm):
-            CommonAlarmStore.shared.delete(commonAlarm)
+            CommonAlarmsRepository.shared.delete(commonAlarm)
         case .regular(let regularAlarm):
-            RegularAlarmStore.shared.delete(regularAlarm)
+            RegularAlarmsRepository.shared.delete(regularAlarm)
         }
     }
     

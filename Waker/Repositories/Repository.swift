@@ -8,16 +8,17 @@
 import Foundation
 import Combine
 
+enum RepositoryRefreshResult {
+    case completed
+    case failed(ServiceFetchError)
+}
+
 protocol Repository {
     associatedtype Model
     
     var isConnected: Bool { get }
-    func connect() -> AnyPublisher<[Model], Never>
+    func connect() -> (AnyPublisher<Model, Never>, AnyPublisher<RepositoryRefreshResult, Never>)
     func disconnect()
-    func fetch() -> AnyPublisher<DataFetchResult, Never>
+    func refresh()
 }
 
-enum DataFetchResult {
-    case completed
-    case failed(DataFetchError)
-}

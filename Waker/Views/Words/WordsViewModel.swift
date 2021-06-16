@@ -9,42 +9,55 @@ import Foundation
 import Combine
 
 class WordsViewModel: ObservableObject {
-    @Published var words = [Word]()
-    @Published var fetchResult: DataFetchResult?
-    @Published var isFetching: Bool = false
+    private let isMock: Bool
     
-    var dataCanceller: AnyCancellable?
-    var fetchResultCanceller: AnyCancellable?
+    @Published var words = [Word]()
+    @Published var refreshResult: RepositoryRefreshResult?
+    
+    private var dataCanceller: AnyCancellable?
+    private var refreshResultCanceller: AnyCancellable?
     
     init() {
-        
+        isMock = false
+        connect()
     }
     
     #if DEBUG
     init(mockWords: [Word]) {
-        self.words = mockWords
+        isMock = true
+        words = mockWords
     }
     #endif
     
     deinit {
-        self.dataCanceller?.cancel()
-        self.fetchResultCanceller?.cancel()
+        if (!isMock) {
+            disconnect()
+        }
     }
     
-    func connectDatabase() {
+    func connect() {
+        let (dataPublisher, updateResultPublisher) = WordsRepository.shared.connect()
+        
         if (dataCanceller == nil) {
-            dataCanceller = WordRepository.shared.connect().sink { [weak self] words in
+            dataCanceller = dataPublisher.sink { [weak self] words in
                 self?.words = words
             }
         }
-    }
-
-    func fetch() {
-        isFetching = true
-        fetchResultCanceller = WordRepository.shared.fetch().sink { [weak self] fetchResult in
-            self?.isFetching = false
-            self?.fetchResult = fetchResult
-            self?.fetchResultCanceller?.cancel()
+        if (refreshResultCanceller == nil) {
+            refreshResultCanceller = updateResultPublisher.sink { [weak self] updateResult in
+                self?.refreshResult = updateResult
+            }
         }
+    }
+    
+    func disconnect() {
+        dataCanceller?.cancel()
+        refreshResultCanceller?.cancel()
+        WordsRepository.shared.disconnect()
+    }
+    
+    func update() {
+        refreshResult = nil
+        WordsRepository.shared.refresh()
     }
 }

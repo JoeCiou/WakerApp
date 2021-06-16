@@ -1,5 +1,5 @@
 //
-//  RegularAlarmStore.swift
+//  RegularAlarmsStore.swift
 //  Waker
 //
 //  Created by Joe Ciou on 2021/6/11.
@@ -9,10 +9,17 @@ import Foundation
 import Combine
 import RealmSwift
 
-class RegularAlarmStore: DataSubscriptable {
-    typealias Model = RegularAlarm
-    
-    static let shared = RegularAlarmStore()
+protocol RegularAlarmsStore {
+    var isConnected: Bool { get }
+    func connect() -> AnyPublisher<[RegularAlarm], Never>
+    func disconnect()
+    func add(_ regularAlarm: RegularAlarm)
+    func update(_ regularAlarm: RegularAlarm, hour: Int?, minute: Int?, repeatSettings: RepeatSettings?, remark: String?, isOn: Bool?)
+    func delete(_ regularAlarm: RegularAlarm)
+}
+
+class RegularAlarmsRealmStore: RegularAlarmsStore {
+    static let shared = RegularAlarmsRealmStore()
     
     private let realm = try! Realm()
     private var regularAlarms: Results<RegularAlarm>?
@@ -20,7 +27,7 @@ class RegularAlarmStore: DataSubscriptable {
     private var canceller: AnyCancellable?
     
     var isConnected: Bool {
-        canceller != nil
+        dataSubject != nil
     }
     
     private init() {

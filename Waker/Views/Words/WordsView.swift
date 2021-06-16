@@ -10,53 +10,47 @@ import SwiftUI
 struct WordsView: View {
     @ObservedObject var viewModel: WordsViewModel
     
-    var fetchStateText: some View {
+    var updateStateText: some View {
         Group {
-            if viewModel.isFetching {
-                Text("資料讀取中...")
-            } else if let fetchResult = viewModel.fetchResult {
-                switch fetchResult {
+            if let refreshResult = viewModel.refreshResult {
+                switch refreshResult {
                 case .completed:
-                    Text("同步完成")
+                    Text("已從伺服器同步最新資料")
                 case .failed(let error):
                     switch error {
                     case .networking(_):
-                        Text("網路錯誤，請稍候重試")
+                        Text("您正在使用本地資料") // Cannot use fallthrough in here
                     case .decoding(_):
-                        Text("遠端資料錯誤")
+                        Text("您正在使用本地資料")
                     }
                 }
             } else {
-                EmptyView()
+                Text("從伺服器讀取資料...")
             }
         }
         .font(.subheadline)
-        .padding(.leading)
+        .padding(.vertical, 8)
     }
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                fetchStateText
+            VStack() {
                 List {
                     ForEach(viewModel.words) { word in
                         WordRow(word: word)
                     }
                 }
                 .listStyle(PlainListStyle())
+                updateStateText
             }
             .navigationTitle("單字")
             .navigationBarItems(
                 trailing: Button(action: { [unowned viewModel] in
-                    viewModel.fetch()
+                    viewModel.update()
                 }) {
                     Text("更新")
                 }
             )
-        }
-        .onAppear { [unowned viewModel] in
-            // It will still be called before the view hasn't appeared: https://developer.apple.com/forums/thread/656655
-            viewModel.connectDatabase()
         }
     }
 }
